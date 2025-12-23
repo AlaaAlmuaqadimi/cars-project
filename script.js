@@ -1,3 +1,5 @@
+"use strict";
+
 // =========================
 // Helpers
 // =========================
@@ -11,13 +13,13 @@ const navToggle = $("#navToggle");
 const nav = $("#nav");
 
 navToggle?.addEventListener("click", () => {
-  nav.classList.toggle("is-open");
+  nav?.classList.toggle("is-open");
 });
 
 // Close nav when clicking a link (mobile)
-$$(".nav__link, .nav__cta", nav).forEach((a) => {
+$$(".nav__link, .nav__cta", nav || document).forEach((a) => {
   a.addEventListener("click", () => {
-    nav.classList.remove("is-open");
+    nav?.classList.remove("is-open");
   });
 });
 
@@ -63,77 +65,91 @@ const spy = new IntersectionObserver(
 sections.forEach((s) => spy.observe(s));
 
 // =========================
-// Tabs (Brands Section)
-// =========================
-const tabs = $$(".tab");
-const panels = $$(".panel");
-
-tabs.forEach((t) => {
-  t.addEventListener("click", () => {
-    const target = t.dataset.tab;
-
-    tabs.forEach((x) => x.classList.remove("is-active"));
-    t.classList.add("is-active");
-
-    panels.forEach((p) => p.classList.remove("is-active"));
-    $(`#${target}`)?.classList.add("is-active");
-  });
-});
-
-// =========================
-// Animated Counters (Stats)
-// =========================
-const counters = $$("[data-counter]");
-let countersStarted = false;
-
-function animateCounter(el, to) {
-  const duration = 1100; // ms
-  const start = 0;
-  const startTime = performance.now();
-
-  function tick(now) {
-    const t = Math.min((now - startTime) / duration, 1);
-    const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
-    const val = Math.round(start + (to - start) * eased);
-    el.textContent = val.toString();
-    if (t < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-
-const statsSection = $("#stats");
-if (statsSection) {
-  const statsObs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !countersStarted) {
-          countersStarted = true;
-          counters.forEach((c) => {
-            const to = Number(c.getAttribute("data-counter") || "0");
-            animateCounter(c, to);
-          });
-        }
-      });
-    },
-    { threshold: 0.25 }
-  );
-
-  statsObs.observe(statsSection);
-}
-
-// =========================
-// Fake Form Submit (Front-end only)
-// =========================
-const fakeSubmit = $("#fakeSubmit");
-const formNote = $("#formNote");
-
-fakeSubmit?.addEventListener("click", () => {
-  if (!formNote) return;
-  formNote.textContent = "تم الاستلام (واجهة فقط). اربط النموذج بخدمة إرسال لاحقاً.";
-});
-
-// =========================
 // Footer Year
 // =========================
 const yearEl = $("#year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// =========================
+// Contact + Map Enhancements
+// =========================
+
+// Toast helper
+const toastEl = document.getElementById("toast");
+function toast(msg) {
+  if (!toastEl) return;
+  toastEl.textContent = msg;
+  toastEl.classList.add("is-open");
+  clearTimeout(toastEl._t);
+  toastEl._t = setTimeout(() => toastEl.classList.remove("is-open"), 2200);
+}
+
+// Copy map link
+const copyMapBtn = document.getElementById("copyMapLink");
+copyMapBtn?.addEventListener("click", async () => {
+  const link = "https://maps.app.goo.gl/CSfUKTBjY8PnpJjAA";
+  try {
+    await navigator.clipboard.writeText(link);
+    toast("تم نسخ رابط الموقع ✅");
+  } catch {
+    toast("تعذر النسخ — انسخ الرابط يدويًا");
+  }
+});
+
+// =========================
+// Contact Form -> Email (temporary via mailto)
+// =========================
+
+// ضع بريد الاستقبال هنا (مؤقتًا)
+const TO_EMAIL = "info@example.com"; // <-- غيّره لبريد الشركة الحقيقي
+
+const contactForm = document.getElementById("contactForm");
+const formNote = document.getElementById("formNote");
+
+function normalizePhoneForDisplay(phone) {
+  // لا نغير الرقم كثيرًا—فقط تنظيف خفيف
+  return phone.replace(/\s+/g, " ").trim();
+}
+
+contactForm?.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name")?.value.trim();
+  const phoneRaw = document.getElementById("phone")?.value.trim();
+  const type = document.getElementById("type")?.value;
+  const message = document.getElementById("message")?.value.trim();
+
+  const phone = normalizePhoneForDisplay(phoneRaw || "");
+
+  if (!name || !phone || !message) {
+    if (formNote) formNote.textContent = "رجاءً املأ جميع الحقول المطلوبة.";
+    toast("رجاءً أكمل البيانات المطلوبة");
+    return;
+  }
+
+  const subject = `طلب جديد - ${type} | شركة لبدة الليبية`;
+  const body =
+`مرحباً،
+
+وصل طلب جديد عبر الموقع:
+
+الاسم: ${name}
+رقم الهاتف: ${phone}
+نوع الطلب: ${type}
+
+التفاصيل:
+${message}
+
+— تم الإرسال من نموذج الموقع`;
+
+  // mailto (حل مؤقت: يفتح برنامج البريد لدى المستخدم)
+  const mailtoUrl =
+    `mailto:${encodeURIComponent(TO_EMAIL)}` +
+    `?subject=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailtoUrl;
+
+  if (formNote) formNote.textContent = "تم تجهيز البريد ✅ يرجى الضغط على إرسال داخل تطبيق البريد.";
+  toast("تم فتح البريد برسالة جاهزة ✅");
+});

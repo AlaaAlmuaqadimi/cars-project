@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="icon" href="logo.png">
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -43,9 +43,7 @@
           <a class="nav__link" href="#about">نبذة</a>
           <a class="nav__link" href="#why">لماذا نحن</a>
           <a class="nav__link" href="#services">الخدمات</a>
-          <a class="nav__link" href="#process">آلية العمل</a>
-          <a class="nav__link" href="#brands">الأنواع/العلامات</a>
-          <a class="nav__link" href="#stats">إحصاءات</a>
+          <a class="nav__link" href="#process">آلية العمل</a> 
           <a class="nav__link" href="#location">الموقع</a>
           <a class="nav__link" href="#contact">التواصل</a>
           <a class="btn btn--accent nav__cta" href="#contact">تواصل معنا</a>
@@ -290,29 +288,81 @@
       <div class="container">
         <header class="section__head reveal">
           <h2 class="section__title">موقعنا على الخريطة</h2>
-          <p class="section__desc"> 
+          <p class="section__desc">
+            زورنا في المكتب أو افتح الموقع على خرائط Google للحصول على الاتجاهات مباشرة.
           </p>
         </header>
 
-        <div class="map-grid">
-          <div class="card reveal">
-            <h3 class="card__title">زيارة المكتب</h3>
-            <p class="card__text"> 
+        <div class="map-grid map-grid--pro">
+          <div class="card card--pro reveal">
+            <div class="card__kicker">
+              <span class="dot"></span>
+              زيارة المكتب
+            </div>
+
+            <h3 class="card__title">شركة لبدة الليبية</h3>
+            <p class="card__text">
+              شارع لبدة الليبية، استيراد السيارات وقطع الغيار، طرابلس، ليبيا
             </p>
+
+            <div class="info-list">
+              <div class="info-item">
+                <span class="info-item__label">الهاتف</span>
+                <span class="info-item__value">
+                  <a href="tel:+218913908082">0913908082</a>
+                  <a class="phone-ltr" dir="ltr" href="tel:+15147702786">+1 (514) 770-2786</a>
+                </span>
+              </div>
+              <div class="info-item">
+                <span class="info-item__label">أيام العمل</span>
+                <span class="info-item__value">السبت – الخميس</span>
+              </div>
+              <div class="info-item">
+                <span class="info-item__label">الوقت</span>
+                <span class="info-item__value">09:00 – 17:00</span>
+              </div>
+            </div>
+
             <div class="map-actions">
               <a
-                class="btn btn--soft"
+                class="btn btn--primary"
                 target="_blank"
                 rel="noopener"
                 href="https://maps.app.goo.gl/CSfUKTBjY8PnpJjAA"
-                >فتح في Google Maps</a
               >
-              <a class="btn btn--ghost" href="#contact">تواصل لتحديد موعد</a>
+                فتح الاتجاهات على Google Maps
+              </a> 
+            </div>
+
+            <div class="micro-note"> 
+              <div class="contact-card contact-card--pro reveal">
+                <div class="contact-card__top">
+                  <h3>واتساب</h3>
+                  <span class="tag tag--soft">رد سريع</span>
+                </div>
+                <p class="contact-lines">
+                  مراسلة مباشرة على واتساب لتسريع الطلبات والاستفسارات.
+                </p>
+                <a
+                  class="btn btn--soft btn--block"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://wa.me/218913908082"
+                >
+                  فتح واتساب
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="map-frame reveal" aria-label="Google Map">
-            <!-- Embed via query (works without exact place-id). You can replace it with official embed later. -->
+          <div class="map-frame map-frame--pro reveal" aria-label="Google Map">
+            <div class="map-frame__top">
+              <span class="map-pill">Google Map</span>
+              <button class="btn btn--soft btn--sm" id="copyMapLink" type="button">
+                نسخ رابط الموقع
+              </button>
+            </div>
+
             <iframe
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
@@ -331,61 +381,40 @@
         <header class="section__head reveal">
           <h2 class="section__title">معلومات التواصل</h2>
           <p class="section__desc">
-            اختر وسيلة التواصل المناسبة، وسنرد عليك بأسرع وقت ممكن.
+            املأ نموذج التواصل وسنقوم بالرد عليك عبر البريد الإلكتروني في أقرب وقت ممكن.
           </p>
+
         </header>
 
-        <div class="contact-grid">
-          <div class="contact-cards">
-            <div class="contact-card reveal">
-              <h3>الهاتف</h3>
-              <p>
-                <a href="tel:+218913908082">0913908082</a><br />
-                <a href="tel:+15147702786">+1 (514) 770-2786</a>
-              </p>
-              <a class="btn btn--primary btn--block" href="tel:+218913908082"
-                >اتصال مباشر</a
-              >
-            </div>
-
-            <div class="contact-card reveal">
-              <h3>واتساب </h3>
-              <p></p>
-              <a
-                class="btn btn--soft btn--block"
-                target="_blank"
-                rel="noopener"
-                href="https://wa.me/218913908082"
-                >فتح واتساب</a
-              >
-            </div>
-
-            <div class="contact-card reveal">
-              <h3>ساعات العمل</h3>
-              <p>السبت - الخميس<br />09:00 صباحاً - 05:00 مساءً</p>
-              <a class="btn btn--ghost btn--block" href="#location">الموقع</a>
-            </div>
+        <div class="contact-grid contact-grid--pro">
+          <!-- Car video -->
+          <div class="contact-visual reveal">
+            <video class="hero-bg-video" autoplay muted loop playsinline>
+              <source src="assets/video/footer.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
 
-          <form class="form card reveal" onsubmit="return false;">
+          <!-- Form -->
+          <form class="form card card--pro reveal" id="contactForm">
             <h3 class="card__title">نموذج تواصل سريع</h3>
-            <p class="card__text"> 
-              املأ النموذج أدناه وسنعود إليك في أقرب وقت ممكن.
+            <p class="card__text">
+              املأ البيانات، ثم اضغط إرسال—سنفتح واتساب برسالة جاهزة باسمك وطلبك.
             </p>
 
             <div class="form__row">
-              <label>الاسم</label>
-              <input type="text" placeholder="اكتب اسمك" required />
+              <label for="name">الاسم</label>
+              <input id="name" type="text" placeholder="اكتب اسمك" required />
             </div>
 
             <div class="form__row">
-              <label>رقم الهاتف</label>
-              <input type="tel" placeholder="مثال: 091xxxxxxx" required />
+              <label for="phone">رقم الهاتف</label>
+              <input id="phone" type="tel" inputmode="tel" placeholder="مثال: 091xxxxxxx" required />
             </div>
 
             <div class="form__row">
-              <label>الطلب</label>
-              <select>
+              <label for="type">الطلب</label>
+              <select id="type">
                 <option>استيراد سيارة</option>
                 <option>قطع غيار</option>
                 <option>طلب تاجر / كميات</option>
@@ -394,19 +423,33 @@
             </div>
 
             <div class="form__row">
-              <label>الرسالة</label>
-              <textarea rows="4" placeholder="اكتب التفاصيل..." required></textarea>
+              <label for="message">الرسالة</label>
+              <textarea
+                id="message"
+                rows="4"
+                placeholder="اكتب التفاصيل... (موديل/سنة/رقم شاصي إن وجد)"
+                required
+              ></textarea>
             </div>
 
-            <button class="btn btn--primary btn--block" id="fakeSubmit">
-              إرسال
-            </button>
+            <div class="btn-row">
+              <button class="btn btn--primary btn--block" type="submit">
+                إرسال الطلب
+              </button>
+              <button class="btn btn--ghost btn--block" type="reset">
+                تفريغ
+              </button>
+            </div>
 
             <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
     </section>
+
+<!-- Toast -->
+<div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+
 
     <!-- FOOTER -->
     <footer class="footer">

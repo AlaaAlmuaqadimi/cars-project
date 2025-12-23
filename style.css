@@ -91,6 +91,13 @@ img {
   background: var(--accent);
   box-shadow: 0 0 0 4px rgba(243, 194, 48, 0.18);
 }
+.dot2 {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: whitesmoke;
+  box-shadow: 0 0 0 4px rgba(58, 48, 243, 0.18);
+}
 
 /* =========================
    Header / Nav

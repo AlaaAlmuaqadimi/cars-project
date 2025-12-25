@@ -199,7 +199,25 @@ img { max-width: 100%; display: block; }
   border-radius: 999px;
 }
 
+/* القائمة المنسدلة */
+.lang-menu{
+  position: absolute;
+  top: calc(100% + 10px);
+  inset-inline-end: 0;
+  min-width: 140px;
+  padding: 8px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(7,11,20,.92);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 6px;
 
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 180ms var(--ease), transform 180ms var(--ease);
+}
 
 .lang-switch.is-open .lang-menu{
   opacity: 1;
@@ -753,12 +771,28 @@ img { max-width: 100%; display: block; }
   }
   .nav.is-open { display: flex; }
   .nav__cta { margin-inline-start: 0; }
+ 
+  /* الهيدر مرجع */
+  .header__inner {
+    position: relative;
+  }
 
-  /* ترتيب الهيدر على الموبايل */
-  .lang-switch{ order: 2; }
-  .nav-toggle{ order: 3; }
-  .brand{ order: 1; }
+  /* زر اللغة */
+  .lang-switch {
+    position: absolute;
+    top: 50%;
+    inset-inline-end: 52px; /* ← قلّلنا المسافة */
+    transform: translateY(-50%);
+    z-index: 62;
+  }
+
+  /* زر القائمة */
+  .nav-toggle {
+    position: relative;
+    z-index: 63;
+  }
 }
+ 
 
 @media (max-width: 520px) {
   .topbar__inner { flex-direction: column; align-items: flex-start; }

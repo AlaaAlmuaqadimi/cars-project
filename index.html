@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>شركة لبدة الليبية | استيراد السيارات وقطع الغيار</title>
+    <title data-i18n="meta.title">شركة لبدة الليبية | استيراد السيارات وقطع الغيار</title>
     <meta
       name="description"
+      data-i18n-content="meta.description"
       content="شركة لبدة الليبية لاستيراد السيارات وقطع الغيار - خدمات احترافية، توريد موثوق، وقطع أصلية."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,140 +14,137 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
       rel="stylesheet"
-    /> 
-    <link rel="icon" href="logo.png">
+    />
+    <link rel="icon" href="logo.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body> 
-
+  <body>
     <!-- Header / Nav -->
     <header class="header" id="top">
       <div class="container header__inner">
-        <a class="brand" href="#top" aria-label="الانتقال إلى الأعلى">
+        <a class="brand" href="#top" aria-label="الانتقال إلى الأعلى" data-i18n-aria="a11y.goTop">
           <span class="brand__mark">
-            <img src="logo.png" alt="شركة لبدة الليبية" />
+            <img src="logo.png" alt="شركة لبدة الليبية" data-i18n-alt="a11y.logoAlt" />
           </span>
 
           <span class="brand__text">
-            <strong>شركة لبدة الليبية</strong>
-            <small>لاستيراد السيارات وقطع الغيار</small>
+            <strong data-i18n="brand.name">شركة لبدة الليبية</strong>
+            <small data-i18n="brand.tagline">لاستيراد السيارات وقطع الغيار</small>
           </span>
         </a>
 
-        <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة">
+        <!-- زر اللغة (AR | EN) -->
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Toggle language">
+          <span class="lang-chip" id="langAr">AR</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-chip" id="langEn">EN</span>
+        </button>
+
+        <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة" data-i18n-aria="a11y.openMenu">
           <span></span><span></span><span></span>
         </button>
 
         <nav class="nav" id="nav">
-          <a class="nav__link" href="#hero">الرئيسية</a>
-          <a class="nav__link" href="#about">نبذة</a>
-          <a class="nav__link" href="#why">لماذا نحن</a>
-          <a class="nav__link" href="#services">الخدمات</a>
-          <a class="nav__link" href="#process">آلية العمل</a> 
-          <a class="nav__link" href="#location">الموقع</a>
-          <a class="nav__link" href="#contact">التواصل</a>
-          <a class="btn btn--accent nav__cta" href="#contact">تواصل معنا</a>
-
+          <a class="nav__link" href="#hero" data-i18n="nav.home">الرئيسية</a>
+          <a class="nav__link" href="#about" data-i18n="nav.about">نبذة</a>
+          <a class="nav__link" href="#why" data-i18n="nav.why">لماذا نحن</a>
+          <a class="nav__link" href="#services" data-i18n="nav.services">الخدمات</a>
+          <a class="nav__link" href="#process" data-i18n="nav.process">آلية العمل</a>
+          <a class="nav__link" href="#location" data-i18n="nav.location">الموقع</a>
+          <a class="nav__link" href="#contact" data-i18n="nav.contact">التواصل</a>
+          <a class="btn btn--accent nav__cta" href="#contact" data-i18n="nav.cta">تواصل معنا</a>
         </nav>
       </div>
     </header>
 
     <!-- HERO -->
     <section class="hero hero--video" id="hero">
-
       <!-- Video Background -->
       <video class="hero-bg-video" autoplay muted loop playsinline>
-        <source src="assets/video/heroVideo.mp4" type="video/mp4">
+        <source src="assets/video/heroVideo.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
       <!-- Overlay -->
       <div class="hero-bg-overlay"></div>
-    <div class="hero-center-overlay"></div>
+      <div class="hero-center-overlay"></div>
 
       <div class="container hero__grid">
         <div class="hero__content reveal">
-
           <div class="badge badge--light">
             <span class="badge__icon">✓</span>
-            <span>توريد موثوق • قطع أصلية • متابعة حتى التسليم</span>
+            <span data-i18n="hero.badge">توريد موثوق • قطع أصلية • متابعة حتى التسليم</span>
           </div>
 
           <h1 class="hero__title hero__title--video">
-            استيراد سيارات وقطع غيار
-            <span class="accent accent--yellow">بمعايير احترافية</span>
+            <span data-i18n="hero.title1">استيراد سيارات وقطع غيار</span>
+            <span class="accent accent--yellow" data-i18n="hero.title2">بمعايير احترافية</span>
           </h1>
 
-          <p class="hero__text hero__text--video">
-            شركة لبدة الليبية توفر لك حلول استيراد فعّالة، شفافة، وسريعة — من
-            اختيار السيارة أو القطعة إلى الشحن والمتابعة وخدمة ما بعد البيع.
+          <p class="hero__text hero__text--video" data-i18n="hero.text">
+            شركة لبدة الليبية توفر لك حلول استيراد فعّالة، شفافة، وسريعة — من اختيار السيارة أو القطعة إلى الشحن والمتابعة وخدمة ما بعد البيع.
           </p>
 
           <div class="hero__actions">
-            <a class="btn btn--secondary" href="#services">استعرض الخدمات</a>
-            <a class="btn btn--ghost btn--ghost-light" href="#howWeWork">
+            <a class="btn btn--secondary" href="#services" data-i18n="hero.btnServices">استعرض الخدمات</a>
+            <a class="btn btn--ghost btn--ghost-light" href="#howWeWork" data-i18n="hero.btnQuality">
               كيف نضمن الجودة؟
             </a>
           </div>
 
           <div class="hero__highlights">
             <div class="mini-card mini-card--dark">
-              <strong>فحص قبل الشحن</strong>
-              <span>تدقيق مواصفات وحالة</span>
+              <strong data-i18n="hero.card1.title">فحص قبل الشحن</strong>
+              <span data-i18n="hero.card1.text">تدقيق مواصفات وحالة</span>
             </div>
 
             <div class="mini-card mini-card--dark">
-              <strong>سلاسة الإجراءات</strong>
-              <span>خطوات واضحة ومتابعة</span>
+              <strong data-i18n="hero.card2.title">سلاسة الإجراءات</strong>
+              <span data-i18n="hero.card2.text">خطوات واضحة ومتابعة</span>
             </div>
 
             <div class="mini-card mini-card--dark">
-              <strong>توريد قطع أصلية</strong>
-              <span>خيارات متعددة ومضمونة</span>
+              <strong data-i18n="hero.card3.title">توريد قطع أصلية</strong>
+              <span data-i18n="hero.card3.text">خيارات متعددة ومضمونة</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
-
 
     <!-- ABOUT -->
     <section class="section" id="about">
       <div class="container">
         <header class="section__head reveal">
-          <h2 class="section__title">نبذة عن الشركة</h2>
-          <p class="section__desc">
-            نركز على تقديم تجربة استيراد واضحة، ونتعامل بمعايير احترافية تعكس الثقة
-            والاستمرارية.
+          <h2 class="section__title" data-i18n="about.title">نبذة عن الشركة</h2>
+          <p class="section__desc" data-i18n="about.desc">
+            نركز على تقديم تجربة استيراد واضحة، ونتعامل بمعايير احترافية تعكس الثقة والاستمرارية.
           </p>
         </header>
 
         <div class="about-grid">
           <div class="card reveal">
-            <h3 class="card__title">رؤيتنا</h3>
-            <p class="card__text">
-              أن نكون الخيار الأول في توريد السيارات وقطع الغيار عبر نموذج خدمة
-              يعتمد على الشفافية والجودة وسرعة الاستجابة.
+            <h3 class="card__title" data-i18n="about.visionTitle">رؤيتنا</h3>
+            <p class="card__text" data-i18n="about.visionText">
+              أن نكون الخيار الأول في توريد السيارات وقطع الغيار عبر نموذج خدمة يعتمد على الشفافية والجودة وسرعة الاستجابة.
             </p>
           </div>
 
           <div class="card reveal">
-            <h3 class="card__title">رسالتنا</h3>
-            <p class="card__text">
-              توفير حلول استيراد عملية، مع متابعة دقيقة للطلب وتقديم خيارات متعددة
-              تناسب احتياجات العملاء.
+            <h3 class="card__title" data-i18n="about.missionTitle">رسالتنا</h3>
+            <p class="card__text" data-i18n="about.missionText">
+              توفير حلول استيراد عملية، مع متابعة دقيقة للطلب وتقديم خيارات متعددة تناسب احتياجات العملاء.
             </p>
           </div>
 
           <div class="card reveal">
-            <h3 class="card__title">قيمنا</h3>
+            <h3 class="card__title" data-i18n="about.valuesTitle">قيمنا</h3>
             <ul class="list">
-              <li>الالتزام بالمواعيد قدر الإمكان</li>
-              <li>مصداقية في المواصفات والتسعير</li>
-              <li>جودة في اختيار الموردين</li>
-              <li>تواصل واضح طوال رحلة الطلب</li>
+              <li data-i18n="about.values.1">الالتزام بالمواعيد قدر الإمكان</li>
+              <li data-i18n="about.values.2">مصداقية في المواصفات والتسعير</li>
+              <li data-i18n="about.values.3">جودة في اختيار الموردين</li>
+              <li data-i18n="about.values.4">تواصل واضح طوال رحلة الطلب</li>
             </ul>
           </div>
         </div>
@@ -157,36 +155,35 @@
     <section class="section section--alt" id="why">
       <div class="container">
         <header class="section__head reveal">
-          <h2 class="section__title">لماذا تختارنا؟</h2>
-          <p class="section__desc">
-            لأنك تريد تقليل المخاطر في الاستيراد: مواصفات واضحة، موردين موثوقين،
-            وقرارات مبنية على فحص ومتابعة.
+          <h2 class="section__title" data-i18n="why.title">لماذا تختارنا؟</h2>
+          <p class="section__desc" data-i18n="why.desc">
+            لأنك تريد تقليل المخاطر في الاستيراد: مواصفات واضحة، موردين موثوقين، وقرارات مبنية على فحص ومتابعة.
           </p>
         </header>
 
         <div class="features-grid">
           <div class="feature reveal">
             <div class="feature__icon">🛡️</div>
-            <h3>تقليل المخاطر</h3>
-            <p>فحص وتدقيق معلومات قبل تأكيد الطلب لتقليل المفاجآت.</p>
+            <h3 data-i18n="why.f1.title">تقليل المخاطر</h3>
+            <p data-i18n="why.f1.text">فحص وتدقيق معلومات قبل تأكيد الطلب لتقليل المفاجآت.</p>
           </div>
 
           <div class="feature reveal">
             <div class="feature__icon">📦</div>
-            <h3>توريد منظم</h3>
-            <p>خط سير واضح: اختيار → تأكيد → شحن → تتبع → تسليم.</p>
+            <h3 data-i18n="why.f2.title">توريد منظم</h3>
+            <p data-i18n="why.f2.text">خط سير واضح: اختيار → تأكيد → شحن → تتبع → تسليم.</p>
           </div>
 
           <div class="feature reveal">
             <div class="feature__icon">🔧</div>
-            <h3>قطع غيار متنوعة</h3>
-            <p>توفير خيارات (أصلية/بدائل) بحسب المطلوب وبشفافية.</p>
+            <h3 data-i18n="why.f3.title">قطع غيار متنوعة</h3>
+            <p data-i18n="why.f3.text">توفير خيارات (أصلية/بدائل) بحسب المطلوب وبشفافية.</p>
           </div>
 
           <div class="feature reveal" id="howWeWork">
             <div class="feature__icon">💬</div>
-            <h3>تواصل سريع</h3>
-            <p>استجابة منظمة عبر الهاتف/الواتساب وتحديثات مستمرة.</p>
+            <h3 data-i18n="why.f4.title">تواصل سريع</h3>
+            <p data-i18n="why.f4.text">استجابة منظمة عبر الهاتف/الواتساب وتحديثات مستمرة.</p>
           </div>
         </div>
       </div>
@@ -196,41 +193,40 @@
     <section class="section" id="services">
       <div class="container">
         <header class="section__head reveal">
-          <h2 class="section__title">خدماتنا</h2>
-          <p class="section__desc">
-            باقات خدمات مصممة لتناسب احتياجات الأفراد والتجار — من طلب واحد إلى
-            توريد متكرر.
+          <h2 class="section__title" data-i18n="services.title">خدماتنا</h2>
+          <p class="section__desc" data-i18n="services.desc">
+            باقات خدمات مصممة لتناسب احتياجات الأفراد والتجار — من طلب واحد إلى توريد متكرر.
           </p>
         </header>
 
         <div class="services-grid">
           <article class="service-card reveal">
-            <h3>استيراد السيارات</h3>
-            <p>اختيار سيارات حسب الميزانية والمواصفات المطلوبة مع متابعة كاملة.</p>
+            <h3 data-i18n="services.s1.title">استيراد السيارات</h3>
+            <p data-i18n="services.s1.text">اختيار سيارات حسب الميزانية والمواصفات المطلوبة مع متابعة كاملة.</p>
             <ul class="ticks">
-              <li>مطابقة مواصفات</li>
-              <li>متابعة الشحن</li>
-              <li>تحديثات دورية</li>
+              <li data-i18n="services.s1.t1">مطابقة مواصفات</li>
+              <li data-i18n="services.s1.t2">متابعة الشحن</li>
+              <li data-i18n="services.s1.t3">تحديثات دورية</li>
             </ul>
           </article>
 
           <article class="service-card reveal">
-            <h3>قطع الغيار</h3>
-            <p>توريد قطع غيار مع خيارات متعددة وتوضيح الفروقات قبل الشراء.</p>
+            <h3 data-i18n="services.s2.title">قطع الغيار</h3>
+            <p data-i18n="services.s2.text">توريد قطع غيار مع خيارات متعددة وتوضيح الفروقات قبل الشراء.</p>
             <ul class="ticks">
-              <li>أصلية/بدائل</li>
-              <li>تحديد رقم القطعة</li>
-              <li>توافقية دقيقة</li>
+              <li data-i18n="services.s2.t1">أصلية/بدائل</li>
+              <li data-i18n="services.s2.t2">تحديد رقم القطعة</li>
+              <li data-i18n="services.s2.t3">توافقية دقيقة</li>
             </ul>
           </article>
 
           <article class="service-card reveal">
-            <h3>خدمة طلبات التجار</h3>
-            <p>تنسيق طلبات متعددة وتوريد دوري للتجار مع آلية متابعة واضحة.</p>
+            <h3 data-i18n="services.s3.title">خدمة طلبات التجار</h3>
+            <p data-i18n="services.s3.text">تنسيق طلبات متعددة وتوريد دوري للتجار مع آلية متابعة واضحة.</p>
             <ul class="ticks">
-              <li>تجميع شحنات</li>
-              <li>تنظيم فواتير</li>
-              <li>تحديث حالة الطلب</li>
+              <li data-i18n="services.s3.t1">تجميع شحنات</li>
+              <li data-i18n="services.s3.t2">تنظيم فواتير</li>
+              <li data-i18n="services.s3.t3">تحديث حالة الطلب</li>
             </ul>
           </article>
         </div>
@@ -241,8 +237,8 @@
     <section class="section section--alt" id="process">
       <div class="container">
         <header class="section__head reveal">
-          <h2 class="section__title">كيف نعمل</h2>
-          <p class="section__desc">
+          <h2 class="section__title" data-i18n="process.title">كيف نعمل</h2>
+          <p class="section__desc" data-i18n="process.desc">
             خطوات قصيرة وواضحة تقلل أي التباس وتضمن أنك فاهم أين وصل طلبك.
           </p>
         </header>
@@ -251,44 +247,44 @@
           <div class="step reveal">
             <div class="step__num">1</div>
             <div class="step__body">
-              <h3>تحديد الطلب</h3>
-              <p>تحديد السيارة/القطعة + المواصفات + الميزانية.</p>
+              <h3 data-i18n="process.p1.title">تحديد الطلب</h3>
+              <p data-i18n="process.p1.text">تحديد السيارة/القطعة + المواصفات + الميزانية.</p>
             </div>
           </div>
 
           <div class="step reveal">
             <div class="step__num">2</div>
             <div class="step__body">
-              <h3>مراجعة وتأكيد</h3>
-              <p>تأكيد المواصفات وتوضيح الخيارات قبل اعتماد الطلب.</p>
+              <h3 data-i18n="process.p2.title">مراجعة وتأكيد</h3>
+              <p data-i18n="process.p2.text">تأكيد المواصفات وتوضيح الخيارات قبل اعتماد الطلب.</p>
             </div>
           </div>
 
           <div class="step reveal">
             <div class="step__num">3</div>
             <div class="step__body">
-              <h3>شحن وتتبع</h3>
-              <p>بدء الشحن مع تحديثات حالة الشحنة حتى الوصول.</p>
+              <h3 data-i18n="process.p3.title">شحن وتتبع</h3>
+              <p data-i18n="process.p3.text">بدء الشحن مع تحديثات حالة الشحنة حتى الوصول.</p>
             </div>
           </div>
 
           <div class="step reveal">
             <div class="step__num">4</div>
             <div class="step__body">
-              <h3>تسليم ودعم</h3>
-              <p>تسليم الطلب وتقديم دعم بخصوص أي استفسار لاحق.</p>
+              <h3 data-i18n="process.p4.title">تسليم ودعم</h3>
+              <p data-i18n="process.p4.text">تسليم الطلب وتقديم دعم بخصوص أي استفسار لاحق.</p>
             </div>
           </div>
         </div>
       </div>
-    </section> 
+    </section>
 
     <!-- LOCATION + MAP -->
     <section class="section" id="location">
       <div class="container">
         <header class="section__head reveal">
-          <h2 class="section__title">موقعنا على الخريطة</h2>
-          <p class="section__desc">
+          <h2 class="section__title" data-i18n="location.title">موقعنا على الخريطة</h2>
+          <p class="section__desc" data-i18n="location.desc">
             زورنا في المكتب أو افتح الموقع على خرائط Google للحصول على الاتجاهات مباشرة.
           </p>
         </header>
@@ -297,30 +293,30 @@
           <div class="card card--pro reveal">
             <div class="card__kicker">
               <span class="dot"></span>
-              <h3 class="card__title">شركة لبدة الليبية</h3>
+              <h3 class="card__title" data-i18n="location.company">شركة لبدة الليبية</h3>
             </div>
-            
-            <p class="card__text">
+
+            <p class="card__text" data-i18n="location.address">
               شركة لبدة الليبية، استيراد السيارات وقطع الغيار، طرابلس، ليبيا
             </p>
 
             <div class="info-list">
               <div class="info-item">
-                <span class="info-item__label">الهاتف</span>
-                <div class="card__kicker info-item__value">   
+                <span class="info-item__label" data-i18n="location.phoneLabel">الهاتف</span>
+                <div class="card__kicker info-item__value">
                   <a href="tel:+218913908082">0913908082</a>
                   <p class="dot2"></p>
                   <a class="phone-ltr" dir="ltr" href="tel:+15147702786">+1 (514) 770-2786</a>
+                </div>
               </div>
 
+              <div class="info-item">
+                <span class="info-item__label" data-i18n="location.daysLabel">أيام العمل</span>
+                <span class="info-item__value" data-i18n="location.daysValue">السبت – الخميس</span>
               </div>
               <div class="info-item">
-                <span class="info-item__label">أيام العمل</span>
-                <span class="info-item__value">السبت – الخميس</span>
-              </div>
-              <div class="info-item">
-                <span class="info-item__label">الوقت</span>
-                <span class="info-item__value">09:00 – 17:00</span>
+                <span class="info-item__label" data-i18n="location.timeLabel">الوقت</span>
+                <span class="info-item__value" data-i18n="location.timeValue">09:00 – 17:00</span>
               </div>
             </div>
 
@@ -330,18 +326,19 @@
                 target="_blank"
                 rel="noopener"
                 href="https://maps.app.goo.gl/CSfUKTBjY8PnpJjAA"
+                data-i18n="location.openMaps"
               >
                 فتح الاتجاهات على Google Maps
-              </a> 
+              </a>
             </div>
 
-            <div class="micro-note"> 
+            <div class="micro-note">
               <div class="contact-card contact-card--pro reveal">
                 <div class="contact-card__top">
-                  <h3>واتساب</h3>
-                  <span class="tag tag--soft">رد سريع</span>
+                  <h3 data-i18n="location.whatsappTitle">واتساب</h3>
+                  <span class="tag tag--soft" data-i18n="location.fastReply">رد سريع</span>
                 </div>
-                <p class="contact-lines">
+                <p class="contact-lines" data-i18n="location.whatsappText">
                   مراسلة مباشرة على واتساب لتسريع الطلبات والاستفسارات.
                 </p>
                 <a
@@ -349,6 +346,7 @@
                   target="_blank"
                   rel="noopener"
                   href="https://wa.me/218913908082"
+                  data-i18n="location.openWhatsapp"
                 >
                   فتح واتساب
                 </a>
@@ -358,7 +356,7 @@
 
           <div class="map-frame map-frame--pro reveal" aria-label="Google Map">
             <div class="map-frame__top">
-              <span class="map-pill">Google Map</span> 
+              <span class="map-pill">Google Map</span>
             </div>
 
             <iframe
@@ -367,6 +365,7 @@
               src="https://www.google.com/maps?q=%D8%B4%D8%B1%D9%83%D8%A9%20%D9%84%D8%A8%D8%AF%D8%A9%20%D8%A7%D9%84%D9%84%D9%8A%D8%A8%D9%8A%D8%A9%20%D9%84%D8%A7%D8%B3%D8%AA%D9%8A%D8%B1%D8%A7%D8%AF%20%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%B1%D8%A7%D8%AA%20%D9%88%D9%82%D8%B7%D8%B9%20%D8%A7%D9%84%D8%BA%D9%8A%D8%A7%D8%B1&output=embed"
               allowfullscreen=""
               title="خريطة شركة لبدة الليبية"
+              data-i18n-title="a11y.mapTitle"
             ></iframe>
           </div>
         </div>
@@ -377,42 +376,54 @@
     <section class="section section--alt" id="contact">
       <div class="container">
         <header class="section__head reveal">
-          <h2 class="section__title">معلومات التواصل</h2>
-          <p class="section__desc">
+          <h2 class="section__title" data-i18n="contact.title">معلومات التواصل</h2>
+          <p class="section__desc" data-i18n="contact.desc">
             املأ نموذج التواصل وسنقوم بالرد عليك في أقرب وقت ممكن.
           </p>
-
         </header>
 
         <div class="contact-grid contact-grid--pro">
           <!-- Car video -->
           <div class="contact-visual reveal">
             <video class="hero-bg-video" autoplay muted loop playsinline>
-              <source src="assets/video/footer.mp4" type="video/mp4">
+              <source src="assets/video/footer.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
 
           <!-- Form -->
           <form class="form card card--pro reveal" id="contactForm">
-            <h3 class="card__title">نموذج تواصل سريع</h3>
-            <p class="card__text">
+            <h3 class="card__title" data-i18n="contact.formTitle">نموذج تواصل سريع</h3>
+            <p class="card__text" data-i18n="contact.formText">
               يرجى ملء النموذج أدناه وسنعود إليك في أقرب وقت ممكن.
             </p>
 
             <div class="form__row">
-              <label for="name">الاسم</label>
-              <input id="name" type="text" placeholder="اكتب اسمك" required />
+              <label for="name" data-i18n="contact.nameLabel">الاسم</label>
+              <input
+                id="name"
+                type="text"
+                placeholder="اكتب اسمك"
+                data-i18n-placeholder="contact.namePlaceholder"
+                required
+              />
             </div>
 
             <div class="form__row">
-              <label for="phone">رقم الهاتف</label>
-              <input id="phone" type="tel" inputmode="tel" placeholder="مثال: 091xxxxxxx" required />
+              <label for="phone" data-i18n="contact.phoneLabel">رقم الهاتف</label>
+              <input
+                id="phone"
+                type="tel"
+                inputmode="tel"
+                placeholder="مثال: 091xxxxxxx"
+                data-i18n-placeholder="contact.phonePlaceholder"
+                required
+              />
             </div>
 
             <div class="form__row">
-              <label for="type">الطلب</label>
-              <select id="type">
+              <label for="type" data-i18n="contact.typeLabel">الطلب</label>
+              <select id="type" data-i18n-select="contact.typeOptions">
                 <option>استيراد سيارة</option>
                 <option>قطع غيار</option>
                 <option>طلب تاجر / كميات</option>
@@ -421,19 +432,20 @@
             </div>
 
             <div class="form__row">
-              <label for="message">الرسالة</label>
+              <label for="message" data-i18n="contact.msgLabel">الرسالة</label>
               <textarea
                 id="message"
                 rows="4"
                 placeholder="اكتب التفاصيل... (موديل/سنة/رقم شاصي إن وجد)"
+                data-i18n-placeholder="contact.msgPlaceholder"
                 required
               ></textarea>
             </div>
 
             <div class="btn-row">
-              <button class="btn btn--primary btn--block" type="submit">
+              <button class="btn btn--primary btn--block" type="submit" data-i18n="contact.submit">
                 إرسال الطلب
-              </button> 
+              </button>
             </div>
 
             <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
@@ -442,9 +454,8 @@
       </div>
     </section>
 
-<!-- Toast -->
-<div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
-
+    <!-- Toast -->
+    <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -452,43 +463,45 @@
         <div class="footer__brand">
           <div class="brand brand--footer">
             <span class="brand__mark brand__mark--logo">
-              <img src="logo.png" alt="شركة لبدة الليبية" />
+              <img src="logo.png" alt="شركة لبدة الليبية" data-i18n-alt="a11y.logoAlt" />
             </span>
 
             <span class="brand__text">
-              <strong>شركة لبدة الليبية</strong>
-              <small>استيراد السيارات وقطع الغيار</small>
+              <strong data-i18n="brand.name">شركة لبدة الليبية</strong>
+              <small data-i18n="brand.taglineShort">استيراد السيارات وقطع الغيار</small>
             </span>
           </div>
-          <p class="muted">
-            جودة • شفافية • متابعة — هدفنا تجربة استيراد سلسة وواضحة.
-          </p>
+          <p class="muted" data-i18n="footer.motto">جودة • شفافية • متابعة — هدفنا تجربة استيراد سلسة وواضحة.</p>
         </div>
 
         <div class="footer__links">
-          <h4>روابط</h4>
-          <a href="#about">نبذة</a>
-          <a href="#services">الخدمات</a>
-          <a href="#process">كيف نعمل</a>
-          <a href="#location">الموقع</a>
+          <h4 data-i18n="footer.linksTitle">روابط</h4>
+          <a href="#about" data-i18n="footer.links.about">نبذة</a>
+          <a href="#services" data-i18n="footer.links.services">الخدمات</a>
+          <a href="#process" data-i18n="footer.links.process">كيف نعمل</a>
+          <a href="#location" data-i18n="footer.links.location">الموقع</a>
         </div>
 
         <div class="footer__contact">
-          <h4>تواصل</h4>
+          <h4 data-i18n="footer.contactTitle">تواصل</h4>
           <a href="tel:+218913908082">0913908082</a>
           <a href="tel:+15147702786">+1 (514) 770-2786</a>
-          <a target="_blank" rel="noopener" href="https://maps.app.goo.gl/CSfUKTBjY8PnpJjAA"
-            >Google Maps</a
-          >
+          <a target="_blank" rel="noopener" href="https://maps.app.goo.gl/CSfUKTBjY8PnpJjAA" data-i18n="footer.googleMaps">
+            Google Maps
+          </a>
         </div>
       </div>
 
       <div class="container footer__bottom">
-        <span>© <span id="year"></span> شركة لبدة الليبية. جميع الحقوق محفوظة.</span>
-        <a class="to-top" href="#hero" aria-label="العودة للأعلى">↑</a>
+        <span>
+          © <span id="year"></span>
+          <span data-i18n="footer.rights">شركة لبدة الليبية. جميع الحقوق محفوظة.</span>
+        </span>
+        <a class="to-top" href="#hero" aria-label="العودة للأعلى" data-i18n-aria="a11y.backTop">↑</a>
       </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="i18n.js"></script>
   </body>
 </html>

@@ -1,9 +1,9 @@
 "use strict";
 
 /**
- * i18n.js
- * - Language switcher (AR | EN)
- * - Auto RTL/LTR + lang attribute
+ * i18n.js (Clean)
+ * - Globe language switcher (AR/EN) with dropdown
+ * - Auto RTL/LTR + <html lang/dir> + html.is-ltr class
  * - Translates elements with:
  *    data-i18n="key"                 => textContent
  *    data-i18n-placeholder="key"     => placeholder
@@ -17,6 +17,9 @@
 const I18N_STORAGE_KEY = "site_lang";
 const SUPPORTED_LANGS = ["ar", "en"];
 
+/* =========================
+   Dictionary (keep as-is)
+   ========================= */
 const dict = {
   ar: {
     meta: {
@@ -264,8 +267,7 @@ const dict = {
     },
     location: {
       title: "Find Us on the Map",
-      desc:
-        "Visit our office or open Google Maps to get directions instantly.",
+      desc: "Visit our office or open Google Maps to get directions instantly.",
       company: "Lebda Libya Company",
       address: "Lebda Libya Company, Car & Spare Parts Import, Tripoli, Libya",
       phoneLabel: "Phone",
@@ -305,97 +307,18 @@ const dict = {
   },
 };
 
-// -------------------------
-// Utils
-// -------------------------
+/* =========================
+   Helpers
+   ========================= */
 function getByPath(obj, path) {
   return path.split(".").reduce((acc, k) => (acc && acc[k] != null ? acc[k] : undefined), obj);
 }
 
 function setHtmlLangDir(lang) {
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-  document.documentElement.classList.toggle("is-ltr", lang === "en");
-}
-
-function applyTranslations(lang) {
-  const t = dict[lang] || dict.ar;
-
-  // 1) textContent
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    const val = getByPath(t, key);
-    if (typeof val === "string") el.textContent = val;
-  });
-
-  // 2) placeholder
-  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-placeholder");
-    const val = getByPath(t, key);
-    if (typeof val === "string") el.setAttribute("placeholder", val);
-  });
-
-  // 3) alt
-  document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-alt");
-    const val = getByPath(t, key);
-    if (typeof val === "string") el.setAttribute("alt", val);
-  });
-
-  // 4) title attr
-  document.querySelectorAll("[data-i18n-title]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-title");
-    const val = getByPath(t, key);
-    if (typeof val === "string") el.setAttribute("title", val);
-  });
-
-  // 5) aria-label
-  document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-aria");
-    const val = getByPath(t, key);
-    if (typeof val === "string") el.setAttribute("aria-label", val);
-  });
-
-  // 6) meta content (description)
-  document.querySelectorAll("[data-i18n-content]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-content");
-    const val = getByPath(t, key);
-    if (typeof val === "string") el.setAttribute("content", val);
-  });
-
-  // 7) select options (array)
-  document.querySelectorAll("[data-i18n-select]").forEach((el) => {
-    const key = el.getAttribute("data-i18n-select");
-    const val = getByPath(t, key);
-    if (Array.isArray(val) && el.tagName === "SELECT") {
-      // preserve selected index where possible
-      const oldIndex = el.selectedIndex;
-      el.innerHTML = val.map((opt) => `<option>${opt}</option>`).join("");
-      el.selectedIndex = Math.min(oldIndex, val.length - 1);
-    }
-  });
-
-  // Document title (optional if your <title> has data-i18n)
-  const titleKeyEl = document.querySelector("title[data-i18n]");
-  if (!titleKeyEl) {
-    if (t.meta?.title) document.title = t.meta.title;
-  }
-
-  setHtmlLangDir(lang);
-  syncLangToggleUI(lang);
-}
-
-function syncLangToggleUI(lang) {
-  const arChip = document.getElementById("langAr");
-  const enChip = document.getElementById("langEn");
-  if (!arChip || !enChip) return;
-
-  const isEn = lang === "en";
-  arChip.classList.toggle("is-active", !isEn);
-  enChip.classList.toggle("is-active", isEn);
-
-  const btn = document.getElementById("langToggle");
-  if (btn) btn.setAttribute("aria-label", isEn ? "Switch to Arabic" : "التبديل إلى الإنجليزية");
+  const html = document.documentElement;
+  html.lang = lang;
+  html.dir = lang === "ar" ? "rtl" : "ltr";
+  html.classList.toggle("is-ltr", lang === "en");
 }
 
 function getInitialLang() {
@@ -406,25 +329,128 @@ function getInitialLang() {
   return SUPPORTED_LANGS.includes(browser) ? browser : "ar";
 }
 
-// -------------------------
-// Init
-// -------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("langToggle");
+/* =========================
+   Apply translations
+   ========================= */
+function applyTranslations(lang) {
+  const t = dict[lang] || dict.ar;
 
-  // Apply initial language
+  // data-i18n => textContent
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    const val = getByPath(t, key);
+    if (typeof val === "string") el.textContent = val;
+  });
+
+  // placeholder
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    const val = getByPath(t, key);
+    if (typeof val === "string") el.setAttribute("placeholder", val);
+  });
+
+  // alt
+  document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-alt");
+    const val = getByPath(t, key);
+    if (typeof val === "string") el.setAttribute("alt", val);
+  });
+
+  // title attr
+  document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-title");
+    const val = getByPath(t, key);
+    if (typeof val === "string") el.setAttribute("title", val);
+  });
+
+  // aria-label
+  document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-aria");
+    const val = getByPath(t, key);
+    if (typeof val === "string") el.setAttribute("aria-label", val);
+  });
+
+  // meta content
+  document.querySelectorAll("[data-i18n-content]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-content");
+    const val = getByPath(t, key);
+    if (typeof val === "string") el.setAttribute("content", val);
+  });
+
+  // select options (array)
+  document.querySelectorAll("[data-i18n-select]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-select");
+    const val = getByPath(t, key);
+    if (!Array.isArray(val) || el.tagName !== "SELECT") return;
+
+    const oldIndex = el.selectedIndex;
+    el.innerHTML = val.map((opt) => `<option>${opt}</option>`).join("");
+    el.selectedIndex = Math.min(oldIndex, val.length - 1);
+  });
+
+  // Document title
+  const titleKeyEl = document.querySelector("title[data-i18n]");
+  if (!titleKeyEl && t.meta?.title) document.title = t.meta.title;
+
+  setHtmlLangDir(lang);
+  updateLangMenuUI(lang);
+}
+
+/* =========================
+   Globe menu UI
+   ========================= */
+function updateLangMenuUI(lang) {
+  document.querySelectorAll(".lang-item").forEach((b) => {
+    b.classList.toggle("is-active", b.dataset.lang === lang);
+  });
+
+  const btn = document.getElementById("langBtn");
+  if (btn) {
+    btn.setAttribute("aria-label", lang === "en" ? "Change language (EN)" : "تغيير اللغة (AR)");
+    btn.setAttribute("data-lang", lang === "en" ? "EN" : "AR"); // ✅
+  }
+}
+
+
+function closeLangMenu() {
+  const wrap = document.getElementById("langSwitch");
+  const btn = document.getElementById("langBtn");
+  wrap?.classList.remove("is-open");
+  btn?.setAttribute("aria-expanded", "false");
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const wrap = document.getElementById("langSwitch");
+  const btn = document.getElementById("langBtn");
+
+  // Apply initial language once
   const initial = getInitialLang();
   applyTranslations(initial);
 
-  // Toggle language
-  btn?.addEventListener("click", () => {
-    const current = document.documentElement.lang === "en" ? "en" : "ar";
+  // If globe UI is not present, just stop here (translations still work)
+  if (!wrap || !btn) return;
+
+  // منع ظهور أي قائمة (حتى لو موجودة بالـ HTML)
+  wrap.classList.remove("is-open");
+  btn.setAttribute("aria-expanded", "false");
+
+  // Toggle language مباشرة عند الضغط على الكوكب
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const current =
+      localStorage.getItem(I18N_STORAGE_KEY) ||
+      document.documentElement.lang ||
+      "ar";
+
     const next = current === "ar" ? "en" : "ar";
+
     localStorage.setItem(I18N_STORAGE_KEY, next);
     applyTranslations(next);
 
-    // Optional: close mobile nav after switching
-    const nav = document.getElementById("nav");
-    nav?.classList.remove("is-open");
+    // Close mobile nav (optional)
+    document.getElementById("nav")?.classList.remove("is-open");
   });
 });
